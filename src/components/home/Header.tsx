@@ -1,32 +1,28 @@
+// components/Header.tsx
 "use client";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
-    const [mounted, setMounted] = useState(false); // untuk hindari mismatch
 
     useEffect(() => {
-        setMounted(true); // tandai bahwa komponen sudah di-mount client-side
-
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 100);
+        const onScroll = () => {
+            if (window.scrollY > 100) setScrolled(true);
+            else setScrolled(false);
         };
 
-        handleScroll(); // jalankan sekali saat mount
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", onScroll);
+        onScroll(); // trigger once on mount
 
-        return () => window.removeEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", onScroll);
     }, []);
-
-    if (!mounted) return null; // hindari rendering server-side awal
 
     return (
         <header
-            id="header"
-            className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#FDFBF5]/80 shadow-md" : "bg-transparent"
-                } backdrop-blur-md`}
+            className={`sticky top-0 z-50 backdrop-blur-md transition-all duration-300 ${scrolled ? "bg-[#FDFBF5]/80 shadow-md" : "bg-transparent"
+                }`}
         >
             <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
                 <div
@@ -40,7 +36,7 @@ export default function Header() {
                         height={32}
                         className="w-8 h-8"
                     />
-                    <span className="tracking-tight">AgroLens</span>
+                    <span>AgroLens</span>
                 </div>
 
                 <div className="hidden md:flex space-x-8">
@@ -48,8 +44,8 @@ export default function Header() {
                         <Link
                             key={id}
                             href={`#${id}`}
-                            className={`nav-link hover:text-green-500 transition-colors ${scrolled ? "text-[#333D44]" : "text-white"
-                                }`}
+                            className={`transition-colors font-medium ${scrolled ? "text-[#333D44]" : "text-white"
+                                } hover:text-green-500`}
                         >
                             {id.charAt(0).toUpperCase() + id.slice(1)}
                         </Link>
