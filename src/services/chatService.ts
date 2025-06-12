@@ -6,7 +6,6 @@ export type ChatResponse = {
 
 export const chatService = {
   async sendMessage(prompt: string): Promise<string> {
-    console.log('Sending message to chatService:', prompt);
     const response = await fetch(`${API_URL}/chatbot`, {
       method: 'POST',
       headers: {
@@ -26,7 +25,6 @@ export const chatService = {
     const filteredAnswer = rawAnswer.includes('Jawaban:')
       ? rawAnswer.split('Jawaban:')[1].trim()
       : rawAnswer;
-    console.log('Filtered answer:', filteredAnswer, result);
     return filteredAnswer;
   },
 };

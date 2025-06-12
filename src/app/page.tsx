@@ -1,30 +1,8 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 export default function Home() {
-
-  // test API URL FETCH /
-  useEffect(() => {
-    const fetchApiUrl = async () => {
-      try {
-        const response = await fetch(`${API_URL}`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log('API URL is working:', data);
-      } catch (error) {
-        console.error('Error fetching API URL:', error);
-      }
-    };
-    fetchApiUrl();
-  }, []);
-
-
   return (
     <div className="relative min-h-screen">
       {/* Background Image with Overlay */}
