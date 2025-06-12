@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useChat } from '@/hooks/useChat';
 import { useImageUpload } from '@/hooks/useImageUpload';
 import { ImageUploader } from '@/components/diagnosa/ImageUploader';
