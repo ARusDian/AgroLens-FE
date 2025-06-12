@@ -101,8 +101,9 @@ export default function DiagnosaPage() {
                     <Image
                       src={img.src}
                       alt={img.alt}
+                      width={300}
+                      height={225}
                       className="object-cover w-full h-full"
-
                     />
                   </div>
 
