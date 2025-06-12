@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { useChat } from '@/hooks/useChat';
 import { useImageUpload } from '@/hooks/useImageUpload';
 import { ImageUploader } from '@/components/diagnosa/ImageUploader';
 import { ChatInterface } from '@/components/diagnosa/ChatInterface';
-import { DiseasePrediction, Message } from '@/components/diagnosa/types';
+import Image from 'next/image';
 
 const EXAMPLE_IMAGES = [
   { src: '/example_1.jpg', alt: 'Contoh penyakit padi 1' },
@@ -121,7 +121,7 @@ export default function DiagnosaPage() {
                   }}
                 >
                   <div className='relative aspect-[4/3] bg-gray-700 rounded-lg overflow-hidden'>
-                    <img
+                    <Image 
                       src={img.src}
                       alt={img.alt}
                       className="object-cover w-full h-full"
