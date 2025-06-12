@@ -10,15 +10,15 @@ import Footer from "@/components/home/Footer";
 
 export default function Home() {
   return (
-    <div className="max-h-screen font-sans bg-[#FDFBF5] text-[#333D44]">
+    <div className="max-h-screen font-sans bg-[#FDFBF5] text-[#333D44]" style={{ overflowX: "hidden" }}>
       <Header />
       <Hero />
       <main>
-        <Problem />
-        <Solution />
-        <Details />
-        <Timeline />
-        <Future />
+      <Problem />
+      <Solution />
+      <Details />
+      <Timeline />
+      <Future />
       </main>
       <Footer />
     </div>
